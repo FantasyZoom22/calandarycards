@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Event Booking Card</title>
+    <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+}
+
+body {
+    min-height: 100vh;
+    font-size: 16px;
+    background-color: #f3f3f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    position: relative;
+    width: 450px;
+    height: 400px;
+    background: url(https://media.istockphoto.com/id/1253670012/photo/picture-of-party-people-at-music-festival.jpg?s=170667a&w=0&k=20&c=COUvS93nNjwnzmXW_yhU1WkgpRklAsUTyng3UH0-pKo=) no-repeat center;
+    background-size: cover;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 0 30px 2px rgba(0, 0, 0, 0.25);
+    display: grid;
+    grid-template-rows: 60% 40%;
+}
+
+.event-info {
+    position: relative;
+    display: grid;
+    grid-template-areas: 
+    "empty title title"
+    "info info action";
+    justify-items: center;
+    align-items: center;
+    grid-gap: 16px;
+    padding: 20px;
+}
+
+.event-info * {
+    position: relative;
+}
+
+.title {
+    grid-area: title;
+    font-size: 1.4em;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.additional-info {
+    grid-area: info;
+}
+
+.additional-info p {
+    font-size: 0.9em;
+    margin-top: 8px;
+    letter-spacing: 0.7px;
+}
+
+.action {
+    grid-area: action;
+}
+
+.price {
+    position: absolute;
+    top: -20%;
+    left: 40px;
+    width: 80px;
+    height: 80px;
+    background-color: #fff;
+    color: #dd5e89;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.4);
+    font-size: 1.8em;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.event-info::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 110%;
+    height: 300%;
+    background: linear-gradient(to bottom, #eb5285 0%, #ffe44e 51%, #dd5e89 100%);
+    transform: rotate(-8deg);
+    border-top-right-radius: 100px;
+}
+
+.action {
+    border: 1px solid;
+    outline: none;
+    background-color: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 12px;
+    text-transform: uppercase;
+    font-size: 1.1em;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.action:hover {
+    background-color: #fff;
+    color: #dd5e89;
+}
+ /* New styles for the form and preview section */
+    .form-section {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-section h2 {
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+
+    .form-input {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .form-input label {
+        font-weight: bold;
+    }
+
+    .form-input input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .preview-section {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #f3f3f3;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    input[type="text"] {
+        color: grey;
+    }
+
+    /* Additional styling for the URL input */
+    input[type="url"] {
+        color: grey;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+    }
+</style>
+</head>
+<body>
+
+    <!-- Form for editing event details -->
+    <div class="form-section">
+        <h2>Edit Event Details</h2>
+        <div class="form-input">
+            <label for="event-title">Event Title:</label>
+            <input type="text" id="event-title" value="NY Music Festival">
+        </div>
+        <div class="form-input">
+            <label for="event-price">Event Price:</label>
+            <input type="text" id="event-price" value="80$">
+        </div>
+        <div class="form-input">
+            <label for="event-location">Event Location:</label>
+            <input type="text" id="event-location" value="Palace Theater">
+        </div>
+        <div class="form-input">
+            <label for="event-date">Event Date:</label>
+            <input type="text" id="event-date" value="Sat, Sep 19, 10:00 AM">
+        </div>
+
+        <!-- File Upload or URL Input for Card Background Image -->
+        <div class="form-input">
+            <label for="event-image">Event Image (Upload or URL):</label>
+            <input type="file" id="event-image" accept="image/*">
+            <input type="url" id="event-image-url" placeholder="or Image URL">
+        </div>
+    </div>
+
+    <!-- Live Preview Section -->
+    <div class="preview-section">
+        <h2>Live Preview</h2>
+        <div class="card" id="preview-card">
+            <section class="top"></section>
+            <div class="event-info">
+                <p class="price" id="preview-price">80$</p>
+                <p class="title" id="preview-title">NY Music Festival</p>
+
+                <div class="additional-info">
+                    <p class="info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Palace Theater
+                    </p>
+                    <p class="info">
+                        <i class="fas fa-calendar-alt"></i>
+                        Sat, Sep 19, 10:00 AM
+                    </p>
+                </div>
+                <button class="action">Book it</button>
+            </div>
+        </div>
+    </div>
+<!-- Add this button for capturing and sending the card -->
+<button id="captureAndSend">Capture and Send</button>
+    <!-- JavaScript to update live preview and card image -->
+    <script>
+        const eventTitleInput = document.getElementById('event-title');
+        const eventPriceInput = document.getElementById('event-price');
+        const eventLocationInput = document.getElementById('event-location');
+        const eventDateInput = document.getElementById('event-date');
+        const eventImageInput = document.getElementById('event-image');
+        const eventImageUrlInput = document.getElementById('event-image-url');
+        const previewTitle = document.getElementById('preview-title');
+        const previewPrice = document.getElementById('preview-price');
+        const previewLocation = document.querySelector('.preview-section .info:nth-child(1)');
+        const previewDate = document.querySelector('.preview-section .info:nth-child(2)');
+        const eventCard = document.getElementById('event-card');
+        const previewCard = document.getElementById('preview-card');
+
+        eventTitleInput.addEventListener('input', () => {
+            previewTitle.textContent = eventTitleInput.value;
+        });
+
+        eventPriceInput.addEventListener('input', () => {
+            previewPrice.textContent = eventPriceInput.value;
+        });
+
+        eventLocationInput.addEventListener('input', () => {
+            previewLocation.textContent = eventLocationInput.value;
+        });
+
+        eventDateInput.addEventListener('input', () => {
+            previewDate.textContent = eventDateInput.value;
+        });
+
+        // Function to set the background image of the card
+        function setCardBackgroundImage(imageUrl) {
+            eventCard.style.backgroundImage = `url('${imageUrl}')`;
+            previewCard.style.backgroundImage = `url('${imageUrl}')`;
+        }
+
+        // Handle file input change
+        eventImageInput.addEventListener('change', (e) => {
+            const file = eventImageInput.files[0];
+            if (file) {
+                const imageUrl = URL.createObjectURL(file);
+                setCardBackgroundImage(imageUrl);
+            }
+        });
+
+        // Handle URL input change
+        eventImageUrlInput.addEventListener('input', () => {
+            const imageUrl = eventImageUrlInput.value;
+            setCardBackgroundImage(imageUrl);
+        });
+        
+        
+        
+        // Add an event listener to the "Capture and Send" button
+document.getElementById('captureAndSend').addEventListener('click', () => {
+    // Use HTML2Canvas to capture the event card as an image
+    html2canvas(document.getElementById('event-card')).then(canvas => {
+        // Convert the canvas to a data URL
+        const imageDataUrl = canvas.toDataURL('image/png');
+        
+        // Send the image data and email address to the server-side script
+        sendImageDataToServer(imageDataUrl, 'fantasyzoom22@gmail.com');
+    });
+});
+
+// Function to send the image data and email address to the server
+function sendImageDataToServer(imageDataUrl, recipientEmail) {
+    // Send a POST request to a server-side script (e.g., PHP) using fetch
+    fetch('https://webhook.site/cf687dce-7e23-49de-a3ac-415267fb860d', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ imageData: imageDataUrl, email: recipientEmail }),
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Image sent successfully!');
+        } else {
+            alert('Error sending image.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error sending image.');
+    });
+}
+    </script>
+</body>
+</html>
