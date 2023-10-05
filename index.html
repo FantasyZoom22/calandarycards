@@ -293,36 +293,8 @@ document.getElementById('captureAndSend').addEventListener('click', () => {
     html2canvas(document.getElementById('event-card')).then(canvas => {
         // Convert the canvas to a data URL
         const imageDataUrl = canvas.toDataURL('image/png');
-        
-        // Send the image data and email address to the server-side script
-        sendImageDataToServer(imageDataUrl, 'fantasyzoom22@gmail.com');
-    });
-});
 
-// Function to send the image data and email address to the server
-function sendImageDataToServer(imageDataUrl, recipientEmail) {
-    // Send a POST request to a server-side script (e.g., PHP) using fetch
-    fetch('https://webhook.site/cf687dce-7e23-49de-a3ac-415267fb860d', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ imageData: imageDataUrl, email: recipientEmail }),
-    })
-    .then(response => {
-        if (response.ok) {
-            alert('Image sent successfully!');
-        } else {
-            alert('Error sending image.');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Error sending image.');
-    });
-}
-
-       const cloudinary = cloudinaryCore.Cloudinary.new({
+              const cloudinary = cloudinaryCore.Cloudinary.new({
     cloud_name: 'dsjjtnudl',
     api_key: '272999119546813',
     api_secret: '272999119546813'
@@ -334,6 +306,12 @@ cloudinary.uploader.upload(imageDataUrl, (result) => {
     // Here, you can handle the Cloudinary upload response, which will contain the URL of the uploaded image.
     // You can use this URL to display or further process the image.
 });
+
+    });
+});
+
+
+
 
 });
     </script>
