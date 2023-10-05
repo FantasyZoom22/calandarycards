@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="./style.css">
    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
-   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" ></script>
+   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.3.0/cloudinary-core-shrinkwrap.js"></script>
     <title>Event Booking Cards</title>
     <style>
     * {
@@ -233,6 +234,7 @@ body {
 <button id="captureAndSend">Capture and Send</button>
     <!-- JavaScript to update live preview and card image -->
     <script>
+       document.addEventListener('DOMContentLoaded', function() {
         const eventTitleInput = document.getElementById('event-title');
         const eventPriceInput = document.getElementById('event-price');
         const eventLocationInput = document.getElementById('event-location');
@@ -319,6 +321,21 @@ function sendImageDataToServer(imageDataUrl, recipientEmail) {
         alert('Error sending image.');
     });
 }
+
+       const cloudinary = cloudinaryCore.Cloudinary.new({
+    cloud_name: 'dsjjtnudl',
+    api_key: '272999119546813',
+    api_secret: '272999119546813'
+});
+
+       // Upload the image to Cloudinary
+cloudinary.uploader.upload(imageDataUrl, (result) => {
+    console.log(result);
+    // Here, you can handle the Cloudinary upload response, which will contain the URL of the uploaded image.
+    // You can use this URL to display or further process the image.
+});
+
+});
     </script>
 </body>
 </html>
