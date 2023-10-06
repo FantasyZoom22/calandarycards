@@ -308,7 +308,7 @@ body {
         // Add an event listener to the "Capture and Send" button
 document.getElementById('captureAndSend').addEventListener('click', () => {
     // Use HTML2Canvas to capture the event card as an image
-    html2canvas(document.getElementById('preview-section')).then(canvas => {
+    html2canvas(document.getElementById('event-card')).then(canvas => {
         // Convert the canvas to a data URL
         const imageDataUrl = canvas.toDataURL('image/png');
 
