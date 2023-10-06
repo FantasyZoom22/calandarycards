@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="./style.css">
    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
-   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <title>Event Booking Cards</title>
     <style>
     * {
@@ -309,7 +308,7 @@ body {
         // Add an event listener to the "Capture and Send" button
 document.getElementById('captureAndSend').addEventListener('click', () => {
     // Use HTML2Canvas to capture the event card as an image
-    html2canvas(document.getElementById('event-card')).then(canvas => {
+    html2canvas(document.getElementById('preview-card')).then(canvas => {
         // Convert the canvas to a data URL
         const imageDataUrl = canvas.toDataURL('image/png');
 
