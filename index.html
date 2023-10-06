@@ -8,10 +8,6 @@
     <link rel="stylesheet" href="./style.css">
    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.13.0/cloudinary-core.min.js" integrity="sha512-UJA1iBgFi7BUtsMcnT53Q9Utew/JgJNvrN+/lcMc3G2BmIzrUo0zR7lxjWsvlUWKWbHTBybGdGPj4UdUdIbT2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.13.0/cloudinary-core-shrinkwrap.js" integrity="sha512-DoF0uKo+h3dqikcDIX5mh6hu4qCUY0URazaPECP65a1BnHE1MzALUWjx479KhB/vDXxto/ICS6c1f2fFcX3vGg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.13.0/cloudinary-core-shrinkwrap.min.js" integrity="sha512-+3Q2D316t2nH2ibAtF3YBnV/yz4kQvL2H0Kzvb2HYxJOsRCP6HGPwe4dpXTVtGjdv/ds3Av+HE6Se1n0Hjt0Xg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.13.0/cloudinary-core.js" integrity="sha512-1DCb5YCBlvRMx1fqRBKYOTmQL5H6TIkhCIGtJF8OJ3iKK4+0MRFlqJ8zNNohZhekpWODklvylYwws+hIdGr0xA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Event Booking Cards</title>
     <style>
     * {
@@ -317,19 +313,31 @@ document.getElementById('captureAndSend').addEventListener('click', () => {
         // Convert the canvas to a data URL
         const imageDataUrl = canvas.toDataURL('image/png');
 
-              const cloudinary = cloudinaryCore.Cloudinary.new({
-    cloud_name: 'dsjjtnudl',
-    api_key: '272999119546813',
-    api_secret: '272999119546813'
-});
+       const formData = new FormData();
+formData.append('file', imageDataUrl);
+formData.append('upload_preset', 'ml_default');
 
-       // Upload the image to Cloudinary
-cloudinary.uploader.upload(imageDataUrl, (result) => {
-    console.log(result);
-    // Here, you can handle the Cloudinary upload response, which will contain the URL of the uploaded image.
-    // You can use this URL to display or further process the image.
-});
+const options = {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer 272999119546813', // You should replace YOUR_API_KEY with your actual Cloudinary API key
+  },
+  body: formData,
+};
 
+fetch('https://api.cloudinary.com/v1_1/dsjjtnudl/image/upload/', options)
+  .then(response => response.json())
+  .then(data => {
+    // Handle the response from Cloudinary here
+    console.log(data);
+  })
+  .catch(error => {
+    // Handle errors here
+    console.error(error);
+  });
+
+
+       
     });
 });
 
