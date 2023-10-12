@@ -348,7 +348,7 @@ document.getElementById('preview-section').style.backgroundColor = 'white';
             backgroundColor: 'white'}).then(canvas => {
     
         // Convert the canvas to a data URL
-        const imageDataUrl = canvas.toDataURL('image/svg');
+        const imageDataUrl = canvas.toDataURL('image/png');
 
        const formData = new FormData();
 formData.append('file', imageDataUrl);
