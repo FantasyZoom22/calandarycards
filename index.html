@@ -40,7 +40,7 @@
     position: relative;
     width: 450px;
     height: 400px;
-    background-color: url(https://media.istockphoto.com/id/1253670012/photo/picture-of-party-people-at-music-festival.jpg?s=170667a&w=0&k=20&c=COUvS93nNjwnzmXW_yhU1WkgpRklAsUTyng3UH0-pKo=) no-repeat center;
+    background: url(https://media.istockphoto.com/id/1253670012/photo/picture-of-party-people-at-music-festival.jpg?s=170667a&w=0&k=20&c=COUvS93nNjwnzmXW_yhU1WkgpRklAsUTyng3UH0-pKo=) no-repeat center;
     background-size: cover;
     border-radius: 40px;
     overflow: hidden;
@@ -131,18 +131,22 @@
 }
 
 .action:hover {
-    background-color: #fff;
+    background: #fff;
     color: #dd5e89;
 }
  /* New styles for the form and preview section */
     .form-section {
         margin-top: 20px;
         padding: 20px;
-        background-color: black;
+        background: #fff;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
 
+    .form-section h2 {
+        font-size: 1.2em;
+        font-weight: bold;
+    }
 
     .form-input {
         display: flex;
@@ -163,7 +167,7 @@
     .preview-section {
         margin-top: 20px;
         padding: 20px;
-        background-color: black;
+        background-color: #f3f3f3;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
@@ -246,6 +250,8 @@
             <input type="file" id="event-image" accept="image/*">
             <input type="url" id="event-image-url" placeholder="or Image URL">
         </div>
+       <!-- Add this button for capturing and sending the card -->
+       <button id="captureAndSend">Capture and Send</button>
     </div>
 
     <!-- Live Preview Section -->
@@ -272,9 +278,6 @@
     </div>
 </div>
 
-   
-<!-- Add this button for capturing and sending the card -->
-<button id="captureAndSend">Capture and Send</button>
     <!-- JavaScript to update live preview and card image -->
      <script>
        document.addEventListener('DOMContentLoaded', function() {
