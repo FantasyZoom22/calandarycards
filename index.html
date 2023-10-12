@@ -13,21 +13,28 @@
     <title>Event Booking Cards</title>
     <style>
     * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-    color: #fff;
-}
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         font-family: 'Montserrat', sans-serif;
+         color: #fff;
+      }
 
-body {
-    min-height: 100vh;
-    font-size: 16px;
-    background-color: #f3f3f3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+      body {
+         min-height: 100vh;
+         font-size: 16px;
+         background-color: #f3f3f3;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+
+      .container {
+         display: flex;
+         flex-direction: column; /* Stack the card and form sections vertically */
+         align-items: center;
+      }
+
 
 .card {
     position: relative;
@@ -176,9 +183,24 @@ body {
         border-radius: 5px;
         padding: 10px;
     }
-.container{
-   display: flex;
-}
+/* Style for "Capture and Send" button */
+      #captureAndSend {
+         margin-top: 20px; /* Add space below the preview section */
+         padding: 10px 20px;
+         background-color: #dd5e89;
+         color: #fff;
+         border: none;
+         border-radius: 5px;
+         font-size: 1.2em;
+         font-weight: bold;
+         cursor: pointer;
+         transition: background-color 0.3s, color 0.3s;
+      }
+
+      #captureAndSend:hover {
+         background-color: #fff;
+         color: #dd5e89;
+      }
 </style>
 </head>
 <body>
