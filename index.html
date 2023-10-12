@@ -6,14 +6,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="./style.css">
-     <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.js" integrity="sha512-sn/GHTj+FCxK5wam7k9w4gPPm6zss4Zwl/X9wgrvGMFbnedR8lTUSLdsolDRBRzsX6N+YgG6OWyvn9qaFVXH9w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.esm.js" integrity="sha512-oa6kn7l/guSfv94d8YmJLcn/s3Km4mm/t4RqFqyorSMXkKlg6pFM6HmLXsJvOP/Cl/dv/N5xW7zuaA+paSc55Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.esm.min.js" integrity="sha512-OxXHRCrHZMOqbrhaUX+wMD4pRxO+Ym5CKOf0qsPkBTeBOXBjAKirtaTH87wKgEikZBPOMQPOEqE/3fpWa1wiuQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
     <title>Event Booking Cards</title>
     <style>
-       * {
+    * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -30,6 +26,18 @@ body {
     align-items: center;
 }
 
+.card {
+    position: relative;
+    width: 450px;
+    height: 400px;
+    background: url(https://media.istockphoto.com/id/1253670012/photo/picture-of-party-people-at-music-festival.jpg?s=170667a&w=0&k=20&c=COUvS93nNjwnzmXW_yhU1WkgpRklAsUTyng3UH0-pKo=) no-repeat center;
+    background-size: cover;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 0 30px 2px rgba(0, 0, 0, 0.25);
+    display: grid;
+    grid-template-rows: 60% 40%;
+}
 
 .event-info {
     position: relative;
@@ -168,6 +176,27 @@ body {
 </style>
 </head>
 <body>
+       <div class="card" id="event-card">
+        <section class="top"></section>
+        <div class="event-info">
+            <p class="price">80$</p>
+            <p class="title">NY Music Festival</p>
+
+            <div class="additional-info">
+                <p class="info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Palace Theater
+                </p>
+                <p class="info">
+                    <i class="fas fa-calendar-alt"></i>
+                    Sat, Sep 19, 10:00 AM
+                </p>
+            </div>
+            <button class="action">Book it</button>
+        </div>
+    </div>
+
+
     <!-- Form for editing event details -->
     <div class="form-section">
         <h2>Edit Event Details</h2>
@@ -222,7 +251,7 @@ body {
 <!-- Add this button for capturing and sending the card -->
 <button id="captureAndSend">Capture and Send</button>
     <!-- JavaScript to update live preview and card image -->
-    <script>
+     <script>
        document.addEventListener('DOMContentLoaded', function() {
         const eventTitleInput = document.getElementById('event-title');
         const eventPriceInput = document.getElementById('event-price');
@@ -280,9 +309,10 @@ body {
 document.getElementById('captureAndSend').addEventListener('click', () => {
                
     // Use HTML2Canvas to capture the event card as an image
-    html2canvas(document.getElementById('preview-card')).then(canvas => {
+    html2canvas(document.getElementById('preview-card'),{ allowTaint: true, useCORS: true }).then(canvas => {
+    
         // Convert the canvas to a data URL
-        const imageDataUrl = canvas.toDataURL('image/png');
+        const imageDataUrl = canvas.toDataURL('image/jpg');
 
        const formData = new FormData();
 formData.append('file', imageDataUrl);
