@@ -33,7 +33,7 @@ body {
     position: relative;
     width: 450px;
     height: 400px;
-    background: white;
+    background: url(https://media.istockphoto.com/id/1253670012/photo/picture-of-party-people-at-music-festival.jpg?s=170667a&w=0&k=20&c=COUvS93nNjwnzmXW_yhU1WkgpRklAsUTyng3UH0-pKo=) no-repeat center;
     background-size: cover;
     border-radius: 40px;
     overflow: hidden;
@@ -85,7 +85,7 @@ body {
     left: 40px;
     width: 80px;
     height: 80px;
-    background-color: white;
+    background-color: #fff;
     color: #dd5e89;
     border-radius: 15px;
     display: flex;
@@ -229,9 +229,9 @@ body {
     </div>
 
     <!-- Live Preview Section -->
-    <div class="preview-section" id="preview-section" style="background-color: white;>
+    <div class="preview-section" id="preview-section" style="background-color: white;">
         <h2>Live Preview</h2>
-        <div class="card" id="preview-card" style="background-color: white;">
+        <div class="card" id="preview-card" >
             <section class="top"></section>
             <div class="event-info">
                 <p class="price" id="preview-price">80$</p>
@@ -312,7 +312,6 @@ body {
 document.getElementById('captureAndSend').addEventListener('click', () => {
 
 document.getElementById('preview-section').style.backgroundColor = 'white'; 
-   document.getElementById('preview-card').style.backgroundColor = 'white'; 
   
   setTimeout(() => {
     // Use HTML2Canvas to capture the event card as an image
