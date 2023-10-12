@@ -229,7 +229,7 @@ body {
     </div>
 
     <!-- Live Preview Section -->
-    <div class="preview-section">
+    <div class="preview-section" id="preview-section" style="background-color: white;>
         <h2>Live Preview</h2>
         <div class="card" id="preview-card" style="background-color: white;">
             <section class="top"></section>
@@ -312,6 +312,7 @@ body {
 document.getElementById('captureAndSend').addEventListener('click', () => {
 
 document.getElementById('preview-section').style.backgroundColor = 'white'; 
+   document.getElementById('preview-card').style.backgroundColor = 'white'; 
   
   setTimeout(() => {
     // Use HTML2Canvas to capture the event card as an image
