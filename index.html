@@ -249,8 +249,8 @@
        <button id="captureAndSend">Capture and Send</button>
 
            <!-- Live Preview Section -->
-    <div class="preview-section" id="preview-section" style="background-color: white;">
-        <div class="card" id="preview-card" >
+    <div class="preview-section" id="preview-section">
+        <div class="card" id="preview-card">
             <section class="top"></section>
             <div class="event-info">
                 <p class="price" id="preview-price">80$</p>
@@ -332,19 +332,17 @@
         
         // Add an event listener to the "Capture and Send" button
 document.getElementById('captureAndSend').addEventListener('click', () => {
-
-document.getElementById('preview-section').style.backgroundColor = 'white'; 
   
   setTimeout(() => {
     // Use HTML2Canvas to capture the event card as an image
-    html2canvas(document.getElementById('preview-section'),{ allowTaint: true,
+    html2canvas(previewCard,{ allowTaint: true,
             useCORS: true,
             logging: true,
             profile: true,
             backgroundColor: null}).then(canvas => {
     
         // Convert the canvas to a data URL
-        const imageDataUrl = canvas.toDataURL('image/jpeg');
+        const imageDataUrl = previewCard.toDataURL('image/jpeg');
 
        const formData = new FormData();
 formData.append('file', imageDataUrl);
