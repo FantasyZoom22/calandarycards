@@ -342,7 +342,7 @@ document.getElementById('captureAndSend').addEventListener('click', () => {
             backgroundColor: null}).then(canvas => {
     
         // Convert the canvas to a data URL
-        const imageDataUrl = previewCard.toDataURL('image/jpeg');
+        const imageDataUrl = canvas.toDataURL('image/jpeg');
 
        const formData = new FormData();
 formData.append('file', imageDataUrl);
