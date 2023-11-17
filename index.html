@@ -9,7 +9,9 @@
    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
    <script src="https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.js"></script>
-   
+   <script src="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.js"></script>
+<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.css"/>
+<script async src="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.js"></script>
     <title>Event Booking Cards</title>
     <style>
     * {
@@ -203,9 +205,36 @@
  height: 80px;
 border-radius: 18px;
  }
+
+#download-btn-container {
+  text-align: center;
+  margin-top: 15px;
+}
+
+#download-btn {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#download-btn:hover {
+  background-color: #45a049;
+}
+
 </style>
 </head>
 <body>
+   <div
+  id="snipcart"
+  data-api-key="NDc5NzQzMTQtMzQyNy00MjRmLWIyODItMjA5YWQ4YzJkYTNjNjM3NTczMDkxMzc0NzUyNTMw"
+  hidden
+></div>
 <div class="container">
           <div class="card" hidden id="event-card">
         <section class="top"></section>
@@ -376,7 +405,20 @@ fetch('https://api.cloudinary.com/v1_1/dsjjtnudl/image/upload/', options)
 
             // Display the Cloudinary URL in the designated section
             const cloudinaryURLSection = document.getElementById('cloudinary-url-section');
-            cloudinaryURLSection.innerHTML = `<p>Cloudinary URL: <a href="${cloudinaryURL}" target="_blank">${cloudinaryURL}</a></p>`;
+            cloudinaryURLSection.innerHTML = `<div id="download-btn-container">
+  <a href="${cloudinaryURL}" download="event_card.jpg">
+    <button id="download-btn" 
+    class="snipcart-add-item"
+    data-item-id="cloudinary-url"
+    data-item-price="1.00"
+    data-item-url="${data.secure_url}" <!-- Assign secure_url to data-item-url -->
+    data-item-description="Cloudinary URL Purchase"
+    data-item-image="URL_TO_YOUR_LOGO"
+    data-item-name="Cloudinary URL"
+    >Download Image</button>
+  </a>
+</div>
+`;
        
     
   })
