@@ -9,9 +9,6 @@
    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
    <script src="https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.js"></script>
-   <script src="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.js"></script>
-<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.css"/>
-<script async src="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.js"></script>
     <title>Event Booking Cards</title>
     <style>
     * {
@@ -405,20 +402,7 @@ fetch('https://api.cloudinary.com/v1_1/dsjjtnudl/image/upload/', options)
 
             // Display the Cloudinary URL in the designated section
             const cloudinaryURLSection = document.getElementById('cloudinary-url-section');
-            cloudinaryURLSection.innerHTML = `<div id="download-btn-container">
-  <a href="${cloudinaryURL}" download="event_card.jpg">
-    <button id="download-btn" 
-    class="snipcart-add-item"
-    data-item-id="cloudinary-url"
-    data-item-price="1.00"
-    data-item-url="${data.secure_url}" <!-- Assign secure_url to data-item-url -->
-    data-item-description="Cloudinary URL Purchase"
-    data-item-image="URL_TO_YOUR_LOGO"
-    data-item-name="Cloudinary URL"
-    >Download Image</button>
-  </a>
-</div>
-`;
+            cloudinaryURLSection.innerHTML = `cloudinaryURLSection.innerHTML = `<p>Cloudinary URL: <a href="${cloudinaryURL}" target="_blank">${cloudinaryURL}</a></p>`;
        
     
   })
